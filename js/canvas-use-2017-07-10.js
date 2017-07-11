@@ -19,7 +19,7 @@ var data = [
 var formatter = d3.format('.2p');
 
 MG.data_graphic({
-    title: "EvCC Canvas Use, Fall 2014 - Spring 2017",
+    title: "EvCC Canvas Use, Fall 2013 - Spring 2017",
     data: MG.convert.date(data, 'date'),
     animate_on_load: true,
     area: false,
