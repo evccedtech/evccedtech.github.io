@@ -71,7 +71,7 @@ MG.data_graphic({
     xax_format: function(d) {
         return data[0][d].range;
     },
-    x_label: '% of Possible Points',
+    x_label: 'Score (% Possible Points)',
     mouseover: function(d) {
         d3.select('#canvas-quiz-scores-all svg .mg-active-datapoint')
             .text(d.range + '%  -  ' + format(d.count) + ' quiz submissions');
@@ -97,7 +97,7 @@ MG.data_graphic({
     xax_format: function(d) {
         return data[1][d].range;
     },
-    x_label: '% of Possible Points',
+    x_label: 'Score( % Possible Points)',
     mouseover: function(d) {
         d3.select('#canvas-quiz-scores-20 svg .mg-active-datapoint')
             .text(d.range + '%  -  ' + format(d.count) + ' quiz submissions');
