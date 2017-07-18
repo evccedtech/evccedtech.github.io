@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Canvas Quiz Scores</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+        <script type="text/javascript" src="js/lib/metricsgraphics.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/lib/metricsgraphics.css"/>
+        <style>
+            svg {
+                font-family: "Open Sans", sans-serif;
+            }
+
+            .mg-header {
+                fill: rgb(107,107, 107);
+            }
+
+            .mg-x-axis .label,
+            .mg-y-axis .label {
+                text-transform: capitalize;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="canvas-quiz-scores-all"></div>
+        <div id="canvas-quiz-scores-20" style="margin-top: 2em;"></div>
+        <div class="legend"></div>
+        <script type="text/javascript" src="js/canvas-quiz-scores.js"></script>
+    </body>
+</html>
