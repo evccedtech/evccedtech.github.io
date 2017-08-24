@@ -14,7 +14,7 @@ var data = [
     {"date": "2016-10-01", "percent": .7854},
     {"date": "2017-01-01", "percent": .8031},
     {"date": "2017-04-01", "percent": .8306},
-    {"date": "2017-07-01", "percent": .6788}
+    {"date": "2017-07-01", "percent": .8244}
 ];
 
 var formatter = d3.format('.2p');
