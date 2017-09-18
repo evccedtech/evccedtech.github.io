@@ -4,43 +4,129 @@
         <meta charset="utf-8"/>
         <title>EvCC eLearning Help Desk Locations</title>
         <style>
-            html {height: 300px;}
-            body {height: 300px;}
             h1 {font-size: 20px;}
             h2 {font-size: 16px;}
-            #map {height: 300px; width: 600px;}
+            #map_container {position: relative}
+            #map {position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
+            #map td {padding-bottom: .5em; vertical-align: top}
         </style>
     </head>
     <body>
         <div id="map"></div>
         <script type="text/javascript">
+
+            function pinSymbol(color) {
+
+                return {
+                    path: 'M 0,0 C -2,-20 -10,-22 -10,-30 A 10,10 0 1,1 10,-30 C 10,-22 2,-20 0,0 z M -2,-30 a 2,2 0 1,1 4,0 2,2 0 1,1 -4,0',
+                    fillColor: color,
+                    fillOpacity: 1,
+                    strokeColor: '#c06c0c',
+                    strokeWeight: 1,
+                    scale: 1,
+                };
+            }
+
             function initMap() {
-                var map = new google.maps.Map(document.getElementById('map'), {
+
+                var mapEl = document.getElementById('map');
+
+                var h = window.innerHeight;
+                var w = window.innerWidth;
+
+                var map = new google.maps.Map(mapEl, {
                     zoom: 17,
-                    center: {lat: 48.0062572, lng: -122.2024853}
+                    center: {lat: 48.0062572, lng: -122.2024853},
+                    styles: [{
+                        featureType: 'poi',
+                        elementType: 'labels',
+                        stylers: [{
+                            visibility: 'off'
+                        }]
+                    }],
                 });
 
                 var library = new google.maps.Marker({
-                    icon: {
-                        path: 'M -2,0 0,-2 2,0 0,2 z',
-                        fillColor: 'red',
-                        fillOpacity: .7,
-                        scale: 6,
-                        strokeColor: 'red',
-                        strokeOpacity: 1
-                    },
+                    icon: pinSymbol('#c60c0c'),
                     map: map,
                     position: {lat: 48.00655, lng: -122.205125},
                     title: 'Library Media Center'
                 });
 
-                var libraryInfo = new google.maps.InfoWindow({
-                    content: '<div><h1>Library Media Center<h1><h2>Parks Student Union, First Floor</h2><p><strong>Hours</strong>: TBD</p></div>'
+                var liberty = new google.maps.Marker({
+                    icon: pinSymbol('#c60c0c'),
+                    map: map,
+                    position: {lat: 48.00495, lng: -122.1993},
+                    title: 'Liberty Hall'
                 });
 
+                var tutoring = new google.maps.Marker({
+                    icon: pinSymbol('#c60c0c'),
+                    map: map,
+                    position: {lat: 48.00655, lng: -122.2055},
+                    title: 'Tutoring Center'
+                });
+
+                var whitehorse = new google.maps.Marker({
+                    icon: pinSymbol('#c60c0c'),
+                    map: map,
+                    position: {lat: 48.00495, lng: -122.20125},
+                    title: 'Whitehorse Hall'
+                });
+
+                var libraryInfo = '<div><h1>Library Media Center<h1>' + 
+                                '<h2>Parks Student Union, First Floor</h2>' +
+                                '<table style="width: 100%;"><tr><td><strong>Monday</strong></td><td>10 am - 1 pm</td></tr>' +
+                                '<tr><td><strong>Tuesday</strong></td><td>8 - 10 am<br/>12 - 2:30 pm<br/>3:30 - 5 pm</td></tr>' +
+                                '<tr><td><strong>Wednesday</strong></td><td>10 am - 4:30 pm</td></tr>' +
+                                '<tr><td><strong>Thursday</strong></td><td>8 am - 12 pm</td></tr>' +
+                                '<tr><td><strong>Friday</strong></td><td>Closed</td></tr></table></div>';
+
+                var libertyInfo = '<div><h1>Liberty Hall<h1>' + 
+                                '<h2>Second Floor Study Area</h2>' +
+                                '<table style="width: 100%;"><tr><td><strong>Monday</strong></td><td>Closed</td></tr>' +
+                                '<tr><td><strong>Tuesday</strong></td><td>Closed</td></tr>' +
+                                '<tr><td><strong>Wednesday</strong></td><td>Closed</td></tr>' +
+                                '<tr><td><strong>Thursday</strong></td><td>8 am - 1 pm</td></tr>' +
+                                '<tr><td><strong>Friday</strong></td><td>Closed</td></tr></table></div>';
+
+                var tutoringInfo = '<div><h1>Tutoring Center<h1>' + 
+                                '<h2>Rainier Hall, First Floor</h2>' +
+                                '<table style="width: 100%;"><tr><td><strong>Monday</strong></td><td>8 am - 4:30 pm</td></tr>' +
+                                '<tr><td><strong>Tuesday</strong></td><td>Closed</td></tr>' +
+                                '<tr><td><strong>Wednesday</strong></td><td>2 - 5 pm</td></tr>' +
+                                '<tr><td><strong>Thursday</strong></td><td>Closed</td></tr>' +
+                                '<tr><td><strong>Friday</strong></td><td>Closed</td></tr></table></div>';
+
+                var whitehorseInfo = '<div><h1>Whitehorse Hall<h1>' + 
+                                '<h2>Second Floor Study Area<br/>Southeast Corner</h2>' +
+                                '<table style="width: 100%;"><tr><td><strong>Monday</strong></td><td>Closed</td></tr>' +
+                                '<tr><td><strong>Tuesday</strong></td><td>10:30 am - 2:30 pm</td></tr>' +
+                                '<tr><td><strong>Wednesday</strong></td><td>Closed</td></tr>' +
+                                '<tr><td><strong>Thursday</strong></td><td>Closed</td></tr>' +
+                                '<tr><td><strong>Friday</strong></td><td>Closed</td></tr></table></div>';
+
+                var myInfoWindow = new google.maps.InfoWindow();
+
                 library.addListener('click', function() {
-                    libraryInfo.open(map, library);
-                })
+                    myInfoWindow.setContent(libraryInfo);
+                    myInfoWindow.open(map, library);
+                });
+
+                liberty.addListener('click', function() {
+                    myInfoWindow.setContent(libertyInfo);
+                    myInfoWindow.open(map, liberty);
+                });
+
+                tutoring.addListener('click', function() {
+                    myInfoWindow.setContent(tutoringInfo);
+                    myInfoWindow.open(map, tutoring);
+                });
+
+                whitehorse.addListener('click', function() {
+                    myInfoWindow.setContent(whitehorseInfo);
+                    myInfoWindow.open(map, whitehorse);
+                });
             }
         </script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_TrjwSdR0kbYnrlo87Pru8j3nFfzBnSM&callback=initMap"></script>
