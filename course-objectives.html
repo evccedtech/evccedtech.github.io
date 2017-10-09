@@ -11,6 +11,16 @@
                 padding: 0;
                 height: 100%;
             }
+            #caption {
+                box-sizing: border-box;
+                font-size: .875em;
+                position: fixed;
+                padding: 10px 16px;
+                bottom: 0;
+                left: 0;
+                top: 0;
+                width: 25%;
+            }
             #viz {
                 box-sizing: border-box;
                 height: inherit;
@@ -34,6 +44,20 @@
     </head>
     <body>
         <div id="viz">
+            <div id="caption">
+                <h2>Top Verbs in Course Learning Objectives at EvCC</h2>
+                <p>This diagram shows the co-occurrence of the top ten verbs
+                    used in course learning objectives at Everett Community College.
+                    It displays the frequency with which each of these verbs appears
+                    with the other verbs across all courses. This visualization can
+                    be used to see whether certain verbs tend to be clustered together
+                    in courses, indicating a possible connection between the types of
+                    learning they measure.</p>
+                <p>To focus on a specific verb, hover over its label. This will adjust
+                    the visualization to show only the number of times that verb appears
+                    in course learning objectives with each of the other top verbs.</p>
+
+            </div>
         </div>
         <script src="js/course-objectives.js" type="text/javascript"></script>
     </body>

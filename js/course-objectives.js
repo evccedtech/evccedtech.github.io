@@ -115,4 +115,4 @@ var svg = d3.select("#viz")
     .attr("height", "100%")
     .attr("width", "100%");
 
-svg.append("g").attr("transform", "translate(" + w / 2 + "," + h / 2 + ")").call(chord);
+svg.append("g").attr("transform", "translate(" + w *.6  + "," + h / 2 + ")").call(chord);
