@@ -40,6 +40,8 @@ d3.json("../data/pathways_network.json", function (error, graph) {
 
     svg.call(tip);
 
+    var menu = d3.select("#viz-menu");
+
     var links = svg.append("g")
         .attr("class", "links");
 
