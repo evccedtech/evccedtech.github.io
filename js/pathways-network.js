@@ -61,7 +61,7 @@ d3.json("../data/pathways_network.json", function (error, graph) {
 
     node.call(d3.drag()
         .on("start", dragstarted)
-        .on("drag", dragged);
+        .on("drag", dragged));
 
     node.on("mouseover", function(d) {
         if (d.group === "program") {
