@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://d3js.org/d3.v4.min.js" type="text/javascript"></script>
+        <script src="js/lib/underscore.min.js" type="text/javascript"></script>
+        <script src="js/lib/d3.tooltip.js" type="text/javascript"></script>
+        <style>
+            html, body {
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }
+            #viz {
+                box-sizing: border-box;
+                height: inherit;
+                overflow: hidden;
+                width: 100%;
+            }
+            #viz-menu {
+                background: rgba(255,255,255,.8);
+                border-left: 1px solid #eee;
+                box-sizing: border-box;
+                color: #555;
+                font-size: .875em;
+                position: fixed;
+                padding: 10px 16px;
+                bottom: 0;
+                right: 0;
+                top: 0;
+                width: 25%;
+            }
+            #viz svg {
+                margin: 0;
+                padding: 0;
+            }
+            .nodes circle {
+                stroke-width: 1.5px;
+            }
+
+            #viz svg text {
+                visibility: hidden;
+            }
+
+            #viz svg text.college, #viz svg text.pathway {
+                font-size: 14px;
+                visibility: visible;
+            }
+
+            #viz svg text.college {
+                fill: #fff;
+            }
+
+            #viz svg text.program-group {
+                font-size: 12px;
+                visibility: visible;
+            }
+
+            /* D3 Tooltip */
+            .d3-tip {
+                line-height: 1;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 8px;
+                background: rgba(0, 0, 0, 0.8);
+                color: #fff;
+                border-radius: 2px;
+                pointer-events: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="viz">
+            <div id="viz-menu"></div>
+        </div>
+        <script src="js/pathways-network.js" type="text/javascript"></script>
+    </body>
+</html>
