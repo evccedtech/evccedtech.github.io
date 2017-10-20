@@ -99,7 +99,7 @@ d3.json("../data/clo_intro.json", function(error, graph) {
 
       console.log(graph.links);
       console.log(d);
-      console.log(_.where(graph.links, {source: d.id}));
+      console.log(_.filter(graph.links, function(item) { return item.source.id === d.id; });
 
       tip.show(d); 
     }
