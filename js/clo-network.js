@@ -16,15 +16,13 @@ var tip = d3.tip()
   .attr("class", "d3-tip")
   .html(function(d, links) { 
     var cloNames = _.uniq(links, function(item) { return item.target.id; });
-    var cloNamesList = '';    
-
-    console.log(cloNames);
+    var cloNamesList = '';
 
     cloNames.forEach(function(clo) {
-      cloNamesList += '<br/>' + clo;
+      cloNamesList += '<br/>' + clo.target.id;
     });
 
-    return d.id + cloNamesList;
+    return d.id + '<span style="font-size: 10px;>' + cloNamesList + '</span>';
   });
 
 var svg = d3.select("#viz")
