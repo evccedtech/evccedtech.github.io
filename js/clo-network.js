@@ -96,6 +96,9 @@ d3.json("../data/clo_intro.json", function(error, graph) {
 
     if (!/CLO/.test(nodeSelection.attr("class"))) {
       nodeSelection.classed("active", true);
+
+      console.log(_.where(graph.links, {source: d.id}));
+
       tip.show(d); 
     }
     
