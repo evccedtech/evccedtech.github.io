@@ -12,7 +12,18 @@ var divisionList = {
     "TS": "Transitional Studies"
 };
 
-var tip = d3.tip().attr("class", "d3-tip").html(function(d) { return d.id; });
+var tip = d3.tip()
+  .attr("class", "d3-tip")
+  .html(function(d, links) { 
+    var cloNames = _.uniq(links, function(item) { return item.target.id; });
+    var cloNamesList = '';    
+
+    cloNames.forEach(function(clo) {
+      cloNamesList += '<br/>' + clo;
+    });
+
+    return d.id + cloNamesList;
+  });
 
 var svg = d3.select("#viz")
     .append("svg")
@@ -97,11 +108,9 @@ d3.json("../data/clo_intro.json", function(error, graph) {
     if (!/CLO/.test(nodeSelection.attr("class"))) {
       nodeSelection.classed("active", true);
 
-      console.log(graph.links);
-      console.log(d);
-      console.log(_.filter(graph.links, function(item) { return item.source.id === d.id; }));
+      var links = _.filter(graph.links, function(item) { return item.source.id === d.id; });
 
-      tip.show(d); 
+      tip.show(d, links); 
     }
     
   });
