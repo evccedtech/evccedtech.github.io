@@ -12,7 +12,7 @@ var divisionList = {
     "TS": "Transitional Studies"
 };
 
-var tip = d3.tip().attr("class", "d3-tip").html(function(d) { return d.id; });
+var tip = d3.tip().attr("class", "d3-tip").html(function(d) { console.log(d); return d.id; });
 
 var svg = d3.select("#viz")
     .append("svg")
@@ -42,7 +42,10 @@ d3.json("../data/clo_intro.json", function(error, graph) {
     .text("EvCC Core Learning Outcomes by Division");
 
   menu.append("p")
-    .text('The following network graph shows courses, color-coded by division, that introduce EvCC\'s Core Learning Outcomes. Select a division below to highlight only its courses. Click and drag any CLO to rearrange the graph.');
+    .text('The following network graph shows courses, color-coded by division, that introduce EvCC\'s Core Learning Outcomes.');
+
+  menu.append("p")
+    .text('Select a division below to highlight only its courses. Click and drag any CLO to rearrange the graph.');
 
   var menuItems = menu.append("div")
     .selectAll(".division")
