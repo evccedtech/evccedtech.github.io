@@ -12,7 +12,7 @@ var divisionList = {
     "TS": "Transitional Studies"
 };
 
-var tip = d3.tip().attr("class", "d3-tip").html(function(d) { console.log(d); return d.id; });
+var tip = d3.tip().attr("class", "d3-tip").html(function(d) { return d.id; });
 
 var svg = d3.select("#viz")
     .append("svg")
@@ -97,6 +97,8 @@ d3.json("../data/clo_intro.json", function(error, graph) {
     if (!/CLO/.test(nodeSelection.attr("class"))) {
       nodeSelection.classed("active", true);
 
+      console.log(graph.links);
+      console.log(d);
       console.log(_.where(graph.links, {source: d.id}));
 
       tip.show(d); 
