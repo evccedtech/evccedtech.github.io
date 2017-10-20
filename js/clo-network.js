@@ -18,9 +18,13 @@ var tip = d3.tip()
     var cloNames = _.uniq(links, function(item) { return item.target.id; });
     var cloNamesList = '';
 
+    console.log(cloNames);
+
     cloNames.forEach(function(clo) {
       cloNamesList += '<br/>' + clo.target.id;
     });
+
+    console.log(cloNamesList);
 
     return d.id + '<span style="font-size: 10px;>' + cloNamesList + '</span>';
   });
