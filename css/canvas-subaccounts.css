@@ -1,4 +1,4 @@
-@import url('semantic.min.css');
+@import url('lib/semantic.min.css');
 
 #preview {
     visibility: hidden;
