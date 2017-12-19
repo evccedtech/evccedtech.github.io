@@ -1,0 +1,14 @@
+@import url('semantic.min.css');
+
+#preview {
+    visibility: hidden;
+}
+
+p.desc {
+    color: #555;
+    font-size: .875rem;
+}
+
+#progress .label {
+    color: #888;
+}
