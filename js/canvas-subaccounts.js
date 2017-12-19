@@ -78,8 +78,8 @@ $(document).ready(function() {
     $("#progress").progress({
         percent: 0,
         text: {
-            active: 'Progress...',
-            success: 'Done!'
+            active: '{value} of {total} Steps Completed',
+            success: 'All Steps Completed!'
         }
     });
         
@@ -89,6 +89,8 @@ $(document).ready(function() {
         
         csvIn.hp = null;
         csvIn.provision = null;
+        
+        resetProgress();
         
     });
 
@@ -159,13 +161,15 @@ $(document).ready(function() {
         csvOut = [];
         errors = [];
         
-        $("#progress").progress({
-            percent: 0
-        });
+        resetProgress();
         
     });
     
 });
+
+function resetProgress() {
+    $("#progress").progress('reset').progress('set active');
+}
 
 function addDownloadButton() {
     
