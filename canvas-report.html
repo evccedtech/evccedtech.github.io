@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Canvas Reports</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="./js/lib/underscore.min.js"></script>
+        <script type="text/javascript" src="./js/lib/papaparse.min.js"></script>
+        <script type="text/javascript" src="./js/lib/semantic.min.js"></script>
+        <script type="text/javascript" src="./js/canvas-report.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/canvas-report.css"/>
+    </head>
+    <body>
+        <div class="ui grid container">
+            <div class="row">
+                <div class="two wide column"></div> <!-- .column -->
+                <div class="twelve wide column">
+                    <h1>Canvas Report Generator</h1>
+                    <p>Use this page to generate a report on course publication and use of selected features in your Canvas instance.</p>
+                    <p>You'll need two things to get started:</p>
+                    <ol>
+                        <li>A Canvas API Access Token</li>
+                        <li>A downloaded Canvas course provisioning report.</li>
+                    </ol>
+                </div> <!-- .column -->
+            </div> <!-- .row -->
+            <div class="row">
+                <div class="two wide column"></div> <!-- .column -->
+                <div class="twelve wide column">
+                    <form id="data" class="ui form segment" method="post" enctype="multipart/form-data">
+                        <div class="field">
+                            <label for="instance">Canvas Instance</label>
+                            <input type="text" id="instance" name="instance" placeholder="everettcc.instructure.com"/>
+                        </div>
+                        <div id="token-field" class="field">
+                            <label for="token">Canvas API Token</label>
+                            <input type="password" id="token" name="token"/>
+                        </div>
+                        <div class="field">
+                            <label for="csv">Canvas Provisioning CSV Report</label>
+                            <input type="file" id="csv" name="csv"/>
+                        </div>
+                        <div>
+                            <button id="cancel" type="reset" class="ui gray button">Cancel</button>
+                            <button id="submit" type="submit" class="ui red submit button">Create Report</button>
+                        </div>
+                        <div class="ui tiny indicating progress" id="progress" data-value="0" style="margin-top: 2em;">
+                            <div class="label">Progress</div>
+                            <div class="bar"></div>
+                        </div>
+                    </form>
+                </div> <!-- .column -->
+            </div>
+        </div>
+    </body>
+</html>

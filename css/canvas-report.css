@@ -1,0 +1,10 @@
+@import url('lib/semantic.min.css');
+
+p.desc {
+    color: #555;
+    font-size: .875rem;
+}
+
+#progress .label {
+    color: #888;
+}
