@@ -66,7 +66,7 @@ $(document).ready(function() {
         phase_1_activities = entry['gsx$phase1activities']['$t'];
         phase_2_required_courses = entry['gsx$phase2requiredcourses']['$t'];
         phase_2_suggested_courses = entry['gsx$phase2suggestedcourses']['$t'];
-        phase_2_activities = entry['gsx$phase1activities']['$t'];
+        phase_2_activities = entry['gsx$phase2activities']['$t'];
         
         $("#program_name").text(program_name);
         $("#program_description").text(program_description);
