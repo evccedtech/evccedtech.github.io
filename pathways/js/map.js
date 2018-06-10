@@ -15,6 +15,10 @@ var phase_2_required_courses;
 var phase_2_suggested_courses;
 var phase_2_activities;
 
+var templates = {
+    'courselist': _.template('<div class="ui item"><a class="ui label"><%= course %></a></div>')
+};
+
 function generateProgressIndicators() {
 
     var $phase = $(".phase");
@@ -69,6 +73,18 @@ $(document).ready(function() {
         $("#program_cost").text(program_cost);
         $("#program_transfer_institutions").text(program_transfer_institutions);
         $("#program_careers").text(program_careers);
+        
+        var phase_1_required_courses_parts = phase_1_required_courses.split(/,/g);
+        
+        console.log(phase_1_required_courses_parts);
+        
+        phase_1_required_courses_parts.forEach(function(part) {
+            $("#phase_1_required_courses").append(
+                templates.courselist({
+                    course: part
+                })
+            );
+        });
     });
     
 });
