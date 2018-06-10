@@ -99,7 +99,7 @@ $(document).ready(function() {
             $("#phase_1_activities").append(
                 templates.activitylist({
                     activity: part
-                });
+                })
             );
         });
     });
