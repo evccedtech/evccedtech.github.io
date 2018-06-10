@@ -47,6 +47,8 @@ function generateProgressIndicators() {
 
 $(document).ready(function() {
     
+    new WOW().init();
+    
     generateProgressIndicators();
     
     $.getJSON(sheet_url, function(data) {
