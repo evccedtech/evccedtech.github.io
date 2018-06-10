@@ -1,5 +1,5 @@
 var key = "19R2ouE4c1n7QWnj16kwAfATr0_qTMxuuAe3spiFrjUE";
-var sheet_url = "https://spreadsheets.google.com/feeds/list/" + key + "/od6/public/values?alt=json-in-script&callback="
+var sheet_url = "https://spreadsheets.google.com/feeds/list/" + key + "/od6/public/values?alt=json&callback="
 
 function generateProgressIndicators() {
 
