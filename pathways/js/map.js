@@ -2,6 +2,7 @@ var key = "19R2ouE4c1n7QWnj16kwAfATr0_qTMxuuAe3spiFrjUE";
 var sheet_url = "https://spreadsheets.google.com/feeds/list/" + key + "/od6/public/values?alt=json&callback=?"
 
 var program_name;
+var program_description;
 var pathway_name;
 var phase_1_required_courses;
 var phase_1_suggested_courses;
@@ -45,6 +46,7 @@ $(document).ready(function() {
         var entry = data.feed.entry[0];
         
         program_name = entry['gsx$programname']['$t'];
+        program_description = entry['gsx$programdescription']['$t'];
         pathway_name = entry['gsx$pathwayname']['$t'];
         phase_1_required_courses = entry['gsx$phase1requiredcourses']['$t'];
         phase_1_suggested_courses = entry['gsx$phase1suggestedcourses']['$t'];
@@ -54,6 +56,7 @@ $(document).ready(function() {
         phase_2_activities = entry['gsx$phase1activities']['$t'];
         
         $("#program_name").text(program_name);
+        $("#program_description").text(program_description);
     });
     
 });
