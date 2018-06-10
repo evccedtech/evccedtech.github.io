@@ -1,5 +1,5 @@
-var key = "2PACX-1vTO4-HXwSYyXQGGy5rQrytE0sxuf2u8pjGHa8117SO0vkopu0tjs3elNaBVQ6CINVq-ard2-oq25pHe";
-var sheet_url = "https://spreadsheets.google.com/feeds/list/" + key + "/od6/public/values?alt=json-in-script&callback=x"
+var key = "19R2ouE4c1n7QWnj16kwAfATr0_qTMxuuAe3spiFrjUE";
+var sheet_url = "https://spreadsheets.google.com/feeds/list/" + key + "/od6/public/values?alt=json-in-script&callback="
 
 function generateProgressIndicators() {
 
@@ -30,24 +30,10 @@ $(document).ready(function() {
     
     generateProgressIndicators();
     
-    gsheets.getWorksheet(key).then(function(data) {
-      console.log(data);
-  });
+    $.getJSON(sheet_url, function(data) {
+        //first row "title" column
+        console.log(data);
+        //console.log(data.feed.entry[0]['gsx$title']['$t']);
+    });
     
 });
-
-
-var firstSheet = () => {
-  var spreadsheetID = key;
-  var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID +"/1/public/values?alt=json";
-  return new Promise((resolve,reject)=>{
-    $.getJSON(url, (data)=>{
-        let result = data.feed.entry
-        resolve(result)
-   });
-  })
-}
-
-firstSheet().then(data => {
-  console.log(data)
-})
