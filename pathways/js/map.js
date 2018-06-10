@@ -17,7 +17,7 @@ var phase_2_activities;
 
 var templates = {
     'courselist': _.template('<div class="ui item"><a class="ui label"><%= course %></a></div>'),
-    'activitylist': _.template('<div class="ui item"><%= activity %></div>');
+    'activitylist': _.template('<div class="ui item"><%= activity %></div>')
 };
 
 function generateProgressIndicators() {
