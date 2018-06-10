@@ -16,7 +16,8 @@ var phase_2_suggested_courses;
 var phase_2_activities;
 
 var templates = {
-    'courselist': _.template('<div class="ui item"><a class="ui label"><%= course %></a></div>')
+    'courselist': _.template('<div class="ui item"><a class="ui label"><%= course %></a></div>'),
+    'activitylist': _.template('<div class="ui item"><%= activity %></div>');
 };
 
 function generateProgressIndicators() {
@@ -74,15 +75,31 @@ $(document).ready(function() {
         $("#program_transfer_institutions").text(program_transfer_institutions);
         $("#program_careers").text(program_careers);
         
-        var phase_1_required_courses_parts = phase_1_required_courses.split(/,/g);
-        
-        console.log(phase_1_required_courses_parts);
+        var phase_1_required_courses_parts = phase_1_required_courses.split(/;/g);
+        var phase_1_suggested_courses_parts = phase_1_suggested_courses.split(/;/g);
+        var phase_1_activities_parts = phase_1_activities.split(/;/g);
         
         phase_1_required_courses_parts.forEach(function(part) {
             $("#phase_1_required_courses").append(
                 templates.courselist({
                     course: part
                 })
+            );
+        });
+        
+        phase_1_suggested_courses_parts.forEach(function(part) {
+            $("#phase_1_suggested_courses").append(
+                templates.courselist({
+                    course: part
+                })
+            );
+        });
+        
+        phase_1_activities_parts.forEach(function(part) {
+            $("#phase_1_activities").append(
+                templates.activitylist({
+                    activity: part
+                });
             );
         });
     });
