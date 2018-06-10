@@ -53,8 +53,8 @@ $(document).ready(function() {
         program_description = entry['gsx$programdescription']['$t'];
         program_years = entry['gsx$programyears']['$t'];
         program_cost = entry['gsx$programcost']['$t'];
-        program_transfer_institutions = entry['gsx$program_transfer_institutions']['$t'];
-        program_careers = entry['gsx$program_careers']['$t'];
+        program_transfer_institutions = entry['gsx$programtransferinstitutions']['$t'];
+        program_careers = entry['gsx$programcareers']['$t'];
         pathway_name = entry['gsx$pathwayname']['$t'];
         phase_1_required_courses = entry['gsx$phase1requiredcourses']['$t'];
         phase_1_suggested_courses = entry['gsx$phase1suggestedcourses']['$t'];
