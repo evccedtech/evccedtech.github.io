@@ -78,6 +78,9 @@ $(document).ready(function() {
         var phase_1_required_courses_parts = phase_1_required_courses.split(/;/g);
         var phase_1_suggested_courses_parts = phase_1_suggested_courses.split(/;/g);
         var phase_1_activities_parts = phase_1_activities.split(/;/g);
+        var phase_2_required_courses_parts = phase_2_required_courses.split(/;/g);
+        var phase_2_suggested_courses_parts = phase_2_suggested_courses.split(/;/g);
+        var phase_2_activities_parts = phase_2_activities.split(/;/g);
         
         phase_1_required_courses_parts.forEach(function(part) {
             $("#phase_1_required_courses").append(
@@ -102,6 +105,31 @@ $(document).ready(function() {
                 })
             );
         });
+        
+        phase_2_required_courses_parts.forEach(function(part) {
+            $("#phase_2_required_courses").append(
+                templates.courselist({
+                    course: part
+                })
+            );
+        });
+        
+        phase_2_suggested_courses_parts.forEach(function(part) {
+            $("#phase_2_suggested_courses").append(
+                templates.courselist({
+                    course: part
+                })
+            );
+        });
+        
+        phase_2_activities_parts.forEach(function(part) {
+            $("#phase_2_activities").append(
+                templates.activitylist({
+                    activity: part
+                })
+            );
+        });
+        
     });
     
 });
