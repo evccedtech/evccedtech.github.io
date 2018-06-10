@@ -4,6 +4,10 @@ var sheet_url = "https://spreadsheets.google.com/feeds/list/" + key + "/od6/publ
 var program_name;
 var program_description;
 var pathway_name;
+var program_years;
+var program_cost;
+var program_transfer_institutions;
+var program_careers;
 var phase_1_required_courses;
 var phase_1_suggested_courses;
 var phase_1_activities;
@@ -47,6 +51,10 @@ $(document).ready(function() {
         
         program_name = entry['gsx$programname']['$t'];
         program_description = entry['gsx$programdescription']['$t'];
+        program_years = entry['gsx$programyears']['$t'];
+        program_cost = entry['gsx$programcost']['$t'];
+        program_transfer_institutions = entry['gsx$program_transfer_institutions']['$t'];
+        program_careers = entry['gsx$program_careers']['$t'];
         pathway_name = entry['gsx$pathwayname']['$t'];
         phase_1_required_courses = entry['gsx$phase1requiredcourses']['$t'];
         phase_1_suggested_courses = entry['gsx$phase1suggestedcourses']['$t'];
@@ -57,6 +65,10 @@ $(document).ready(function() {
         
         $("#program_name").text(program_name);
         $("#program_description").text(program_description);
+        $("#program_years").text(program_years);
+        $("#program_cost").text(program_cost);
+        $("#program_transfer_institutions").text(program_transfer_institutions);
+        $("#program_careers").text(program_careers);
     });
     
 });
