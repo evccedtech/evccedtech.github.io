@@ -1,6 +1,15 @@
 var key = "19R2ouE4c1n7QWnj16kwAfATr0_qTMxuuAe3spiFrjUE";
 var sheet_url = "https://spreadsheets.google.com/feeds/list/" + key + "/od6/public/values?alt=json&callback=?"
 
+var program_name;
+var pathway_name;
+var phase_1_required_courses;
+var phase_1_suggested_courses;
+var phase_1_activities;
+var phase_2_required_courses;
+var phase_2_suggested_courses;
+var phase_2_activities;
+
 function generateProgressIndicators() {
 
     var $phase = $(".phase");
@@ -31,9 +40,18 @@ $(document).ready(function() {
     generateProgressIndicators();
     
     $.getJSON(sheet_url, function(data) {
-        //first row "title" column
         console.log(data);
         //console.log(data.feed.entry[0]['gsx$title']['$t']);
+        var entry = data.feed.entry[0];
+        
+        program_name = entry['gsx$programname']['$t'];
+        pathway_name = entry['gsx$pathwayname']['$t'];
+        phase_1_required_courses = entry['gsx$phase1requiredcourses']['$t'];
+        phase_1_suggested_courses = entry['gsx$phase1suggestedcourses']['$t'];
+        phase_1_activities = entry['gsx$phase1activities']['$t'];
+        phase_2_required_courses = entry['gsx$phase2requiredcourses']['$t'];
+        phase_2_suggested_courses = entry['gsx$phase2suggestedcourses']['$t'];
+        phase_2_activities = entry['gsx$phase1activities']['$t'];
     });
     
 });
