@@ -1,26 +1,24 @@
+// Spreadsheet variables
 var key = "19R2ouE4c1n7QWnj16kwAfATr0_qTMxuuAe3spiFrjUE";
 var sheet_url = "https://spreadsheets.google.com/feeds/list/" + key + "/od6/public/values?alt=json&callback=?"
 
-var program_name;
-var program_description;
-var pathway_name;
-var program_years;
-var program_cost;
-var program_transfer_institutions;
-var program_careers;
-var phase_1_required_courses;
-var phase_1_suggested_courses;
-var phase_1_activities;
-var phase_2_required_courses;
-var phase_2_suggested_courses;
-var phase_2_activities;
+function setHtmlValueSimple(id, value) {
 
-var templates = {
-    'courselist': _.template('<div class="ui item"><a class="ui label"><%= course %></a></div>'),
-    'activitylist': _.template('<div class="ui item"><%= activity %></div>')
-};
+    console.log(id, value, typeof value);
+    var compiled = '';
 
-function generateProgressIndicators() {
+    if (typeof value !== 'object') {
+        $(id).text(value);
+    } else {
+        value.forEach(function(item) {
+            compiled += '<div class="item">' + item.replace(/^\s*|\s*$/g, '') + '</div>';
+        });
+        $(id).append('<div class="ui list">' + compiled + '</div>');
+    }
+
+}
+
+function addPhaseIndicators() {
 
     var $phase = $(".phase");
     var len = $phase.length;
@@ -31,7 +29,7 @@ function generateProgressIndicators() {
     }
     
     $phase.each(function() {
-        $(this).find("h2").append('<span class="labels">' + labels + '</span>');
+        $(this).find("h2").append('<span class="labels wow fadeIn" data-wow-delay=".5s">' + labels + '</span>');
     });
     
     $phase.each(function(idx) {
@@ -45,105 +43,52 @@ function generateProgressIndicators() {
     
 }
 
+function addHorizontalLabeledList(id, value) {
+
+    console.log(id, value, typeof value);
+    var compiled = '';
+
+    if (typeof value === 'object') {
+
+    console.log(value.length)
+        if (value.length === 1 && value[0] === '') {
+            compiled = '<div class="item"><span class="ui label">...Placeholder...</span></div>';
+        } else {
+            value.forEach(function(item) {
+                compiled += '<div class="item"><span class="ui label">' + item.replace(/^\s*|\s*$/g, '') + '</span></div>';
+            });
+        }
+
+        $(id).append('<div class="ui horizontal list">' + compiled + '</div>');
+    }
+
+}
+
 $(document).ready(function() {
     
+    // Initialize Wow.js for scroll-based animations
     new WOW().init();
-    
-    generateProgressIndicators();
-    
+
+    addPhaseIndicators();
+
+    // Fetch spreadsheet data
     $.getJSON(sheet_url, function(data) {
-        console.log(data);
-        //console.log(data.feed.entry[0]['gsx$title']['$t']);
+
         var entry = data.feed.entry[0];
-        
-        program_name = entry['gsx$programname']['$t'];
-        program_description = entry['gsx$programdescription']['$t'];
-        program_years = entry['gsx$programyears']['$t'];
-        program_cost = entry['gsx$programcost']['$t'];
-        program_transfer_institutions = entry['gsx$programtransferinstitutions']['$t'];
-        program_careers = entry['gsx$programcareers']['$t'];
-        pathway_name = entry['gsx$pathwayname']['$t'];
-        phase_1_required_courses = entry['gsx$phase1requiredcourses']['$t'];
-        phase_1_suggested_courses = entry['gsx$phase1suggestedcourses']['$t'];
-        phase_1_activities = entry['gsx$phase1activities']['$t'];
-        phase_2_required_courses = entry['gsx$phase2requiredcourses']['$t'];
-        phase_2_suggested_courses = entry['gsx$phase2suggestedcourses']['$t'];
-        phase_2_activities = entry['gsx$phase2activities']['$t'];
-        
-        $("#program_name").text(program_name);
-        $("#program_description").text(program_description);
-        $("#program_years").text(program_years);
-        $("#program_cost").text(program_cost);
-        $("#program_transfer_institutions").text(program_transfer_institutions);
-        $("#program_careers").text(program_careers);
-        
-        var phase_1_required_courses_parts = phase_1_required_courses.split(/;/g);
-        var phase_1_suggested_courses_parts = phase_1_suggested_courses.split(/;/g);
-        var phase_1_activities_parts = phase_1_activities.split(/;/g);
-        var phase_2_required_courses_parts = phase_2_required_courses.split(/;/g);
-        var phase_2_suggested_courses_parts = phase_2_suggested_courses.split(/;/g);
-        var phase_2_activities_parts = phase_2_activities.split(/;/g);
-        
-        phase_1_required_courses_parts.forEach(function(part) {
-            if (part.length > 0) {
-                $("#phase_1_required_courses").append(
-                    templates.courselist({
-                        course: part
-                    })
-                );
-            }
-        });
-        
-        phase_1_suggested_courses_parts.forEach(function(part) {
-            if (part.length > 0) {
-                $("#phase_1_suggested_courses").append(
-                    templates.courselist({
-                        course: part
-                    })
-                );
-            }
-        });
-        
-        phase_1_activities_parts.forEach(function(part) {
-            if (part.length > 0) {
-                $("#phase_1_activities").append(
-                    templates.activitylist({
-                        activity: part
-                    })
-                );
-            }
-        });
-        
-        phase_2_required_courses_parts.forEach(function(part) {
-            if (part.length > 0) {
-                $("#phase_2_required_courses").append(
-                    templates.courselist({
-                        course: part
-                    })
-                );
-            }
-        });
-        
-        phase_2_suggested_courses_parts.forEach(function(part) {
-            if (part.length > 0) {
-                $("#phase_2_suggested_courses").append(
-                    templates.courselist({
-                        course: part
-                    })
-                );
-            }
-        });
-        
-        phase_2_activities_parts.forEach(function(part) {
-            if (part.length > 0) {
-                $("#phase_2_activities").append(
-                    templates.activitylist({
-                        activity: part
-                    })
-                );
-            }
-        });
-        
+
+        setHtmlValueSimple('#program_name', entry['gsx$programname']['$t']);
+        setHtmlValueSimple('#program_description', entry['gsx$programdescription']['$t']);
+        setHtmlValueSimple("#program_duration", entry['gsx$programduration']['$t']);
+        setHtmlValueSimple("#program_cost", entry['gsx$programcost']['$t']);
+        setHtmlValueSimple("#program_transfer_institutions", entry['gsx$programtransferinstitutions']['$t'].split(/;/g));
+        setHtmlValueSimple("#program_careers", entry['gsx$programcareers']['$t'].split(/;/g));
+
+        addHorizontalLabeledList("#phase_1_required", entry['gsx$phase1requiredcourses']['$t'].split(/;/g));
+        addHorizontalLabeledList("#phase_1_suggested", entry['gsx$phase1suggestedcourses']['$t'].split(/;/g));
+        addHorizontalLabeledList("#phase_1_activities", entry['gsx$phase1activities']['$t'].split(/;/g));
+        addHorizontalLabeledList("#phase_2_required", entry['gsx$phase2requiredcourses']['$t'].split(/;/g));
+        addHorizontalLabeledList("#phase_2_suggested", entry['gsx$phase2suggestedcourses']['$t'].split(/;/g));
+        addHorizontalLabeledList("#phase_2_activities", entry['gsx$phase2activities']['$t'].split(/;/g));
+
     });
-    
 });
