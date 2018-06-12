@@ -1,180 +1,142 @@
-@import url("../lib/semantic.min.css");
 @import url("../lib/animate.css");
 
-footer {
-    background-color: rgb(45,45,46);
-    min-height: 120px;
+#masthead {
+    background: rgb(45,45,46);
+    color: white;
+    min-height: 18em;
+    padding-bottom: 2em;
 }
 
-.masthead {
-    border-top: 4px solid #c60c0c !important;
-    margin-bottom: 0 !important;
-    min-height: 380px;
-}
-
-.masthead h1.ui.header {
-    font-size: 3em;
+#masthead h1 {
+    color: white !important;
+    font-size: 3em !important;
     font-weight: normal;
-    margin-top: 2em;
 }
 
-.masthead p {
+#masthead p {
+    color: white !important;
     font-size: 1.5em;
 }
 
-.ui.stripe.segment {
-    border-radius: 0 !important;
-    border-left: none;
-    border-right: none;
-    box-shadow: none;
+#masthead > .banner {
+    background: rgb(198,12,12);
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
-#glance {
-    background: rgb(237,237,238);
-    margin-top: 0 !important;
-    margin-bottom: 2em;
-    padding-top: 2em;
-    padding-bottom: 2em;
+#masthead > .banner .ui.image {
+    max-width: 15%;
+    min-width: 140px;
 }
 
-#glance > h2 {
-    margin-bottom: 1em;
-}
-
-#map #start {
-    padding-top: 2em;
-    padding-bottom: 2em;
-}
-
-.ui.red.button {
-    background: #c60c0c !important;
-}
-
-body > .grid:last-of-type {
-    padding-bottom: 4em;
-}
-
-body > .grid:last-of-type p {
-    font-size: 1.2857em;
-}
-
-.phase {
+#masthead .container {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
 
-.phase .column > p {
-    font-size: 1.2857em;
+#masthead .text.container {
+    padding-top: 5em;
+    padding-bottom: 4em;
 }
 
-.phase .grid h2 > .labels {
+#glance {
+    background-color: rgba(201,202,200,.4);
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    margin-bottom: 4em;
+}
+
+#glance > .header {
+    font-weight: normal;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+#glance .column > .header > .icon {
+    font-size: 2em !important;
+}
+
+#glance .column > .header > .sub.header {
+    font-size: .875em;
+    margin-bottom: .5em;
+}
+
+#glance .column > .header > .content {
+    color: rgb(153,0,0);
+}
+
+#glance .column > .header > .content .ui.list {
+    font-size: .8888em; /* 16px / 18px */
+}
+
+#start {
+    margin-top: 3em;
+}
+
+.phase.segment > h2 > .labels {
     float: right;
 }
 
-.phase .grid h2 > .labels > .ui.grey.label {
-    background-color: #999 !important;
-    border-color: #999 !important;
+.phase.segment > p {
+    font-size: 1.142857em;
 }
 
-.phase .grid .ui.small.icon.header .icon {
-    font-size: 2em;
-}
-
-.phase .grid .segment > .grid {
-    margin-top: 2em;
-}
-
-.phase:nth-of-type(1) > .grid > .row > .segment {
-    border-top: 3px solid #ccc !important;
-}
-
-.phase:nth-of-type(2) > .grid > .row > .segment {
-    border-top: 3px solid #999 !important;
-}
-
-.phase .grid .segment > .grid .ui.horizontal.list.courselist {
-    display: block;
-}
-
-.phase .grid .segment > .grid .ui.horizontal.list.courselist > .item {
+.phase.segment .column .ui.horizontal.list > .item {
     margin-left: 0;
     margin-right: 1em;
 }
 
-.phase .grid .segment > .grid h3 {
-    margin-bottom: .4375em;
+.phase.segment,
+.activities,
+.nextsteps.segment,
+.attached.phase.segment,
+.attached.nextstep.segment,
+.attached.activities.segment {
+    border-color: rgba(34,36,38,.3);
 }
 
-.phase .grid .segment > .grid h3 .icon {
-    background-color: #999 !important;
-    font-size: .444em;
-    margin-right: 0;
-    margin-left: .555em;
+.ui.text.container.segment > .ui.ribbon.label {
+    margin-bottom: 1em;
 }
 
-.interstitial.grid {
-    padding-left: 2em;
-    padding-right: 2em;
+.ui.text.bottom.container.segment p {
+    font-size: .875em;
 }
 
-.interstitial.grid > .row {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+.ui.text.container.segment .ui.icon.header > i.icon {
+    font-size: 2em;
 }
 
-
-.interstitial.grid > .row.spacer > .column {
-    padding-top: 1.5em;
-    padding-bottom: 1.5em;
+.ui.interstitial.container {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 }
 
-.interstitial.grid > .row:last-of-type > .column {
+.ui.interstitial.container:last-of-type {
+    margin-top: 3em;
     padding-bottom: 3em;
 }
 
-.ui.basic.message {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    color: #6f6f6f;
+.ui.interstitial.container > .ui.message {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #666;
+    width: 75%;
+    min-width: 320px;
 }
 
-.ui.label.stem {
-    background-color: rgb(47,53,143);
-    color: white;
+i.blue.icon {
+    color: rgb(10,159,219) !important;
+    border-color: rgb(10,159,219) !important;
 }
 
-.ui.label.aero {
-    background-color: rgb(244,141,49);
+i.darkblue.icon {
+    color: rgb(0,108,168) !important;
+    border-color: rgb(0,108,168) !important;
 }
 
-.ui.label.arts {
-    background-color: rgb(250,211,51);
-}
-
-.ui.label.humanities {
-    background-color: rgb(47,188,184);
-    color: white;
-}
-
-.ui.label.health {
-    background-color: rgb(29,81,42);
-    color: white;
-}
-
-.ui.label.business {
-    background-color: rgb(77,178,76);
-    color: white;
-}
-
-.ui.label.social {
-    background-color: rgb(133,74,154);
-    color: white;
-}
-
-.popup {
-    max-width: 300px;
+.ui.blue.label {
+    background-color: rgb(10,159,219) !important;
+    border-color: rgb(10,159,219) !important;
 }
