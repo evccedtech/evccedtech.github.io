@@ -58,7 +58,7 @@ var accountCodes = {
     'PC': 'HSPS_FIRE',
     'RS': 'CCEC',
     'RZ': 'CCEC',
-    'SA': 'AAMC_APM',
+    'SA': 'AAM_APM',
     'TS': 'TS_TS',
     'TZ': 'MISC',
     'VA': 'BAT_COSMT'
