@@ -46,7 +46,7 @@ var accountCodes = {
     'HM': 'CSS_EDUC',
     'HP': 'HSPS_CJ',
     'HU': 'CSS_ECE',
-    'IC': 'AAM_AMT',
+    'IC': 'AAM_AVA',
     'IH': 'AAM_WELD',
     'JA': 'TS_COLL',
     'JB': 'TS_DEVED',
